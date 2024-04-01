@@ -1,6 +1,17 @@
 :root {
---mainMargin: 20px;
---mainWidth: 1440px;
+    --mainMargin: 20px;
+    --mainWidth: 1440px;
+    --colorMain: rgb(15, 15, 15);
+    --colorContainer: rgb(22, 22, 22);
+    --centerColor: rgba(159, 207, 219, 0.158);
+    --themeColorGraph: cyan;
+    --leftWidth: 280px;
+    --imageWith: 220px;
+
+    --containerMargin: 20px;
+    --textColor: white;
+    --textSize: 10px;
+    --colorGraph: rgb(36, 36, 36);
 }
 
 * {
@@ -8,47 +19,120 @@
     margin: 0;
 }
 
+div[class$='container'] {
+    padding: var(--containerMargin);
+}
+
 body {
 
-    display: flex;
     justify-content: center;
-    background-color: rgb(41, 42, 52);
+    background-color: var(--colorMain);
 
-    .main-container {
+    display: flex;
+
+    font-size: var(--textSize);
+
+    .main-box {
+
         width: var(--mainWidth);
         height: calc(100vh - (2 * var(--mainMargin)));
-        border: 1px solid #ffffff;
         margin-top: var(--mainMargin);
+
         display: flex;
         overflow: auto;
 
         .left-container {
 
-            width: 280px;
-            height: calc(100vh - (2 * var(--mainMargin)));
-            background-color: red;
+            background-color: var(--colorContainer);
+            width: var(--leftWidth);
+            height: 100%;
+            aspect-ratio: 1/1;
+
             position: sticky;
-            top:0px;
-        }
+            top: 0px;
+            /* ARREGLO PARA STICKY */
 
-        .center-container {
+            div {
+                width: 100%;
+                display: flex;
+                justify-content: center;
 
-            width: calc(100% - 360px);
-            background-color: gray;
-            overflow: scroll;
+                img {
 
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-        }
+                    width: var(--imageWith);
+                    aspect-ratio: 1/1;
+                    opacity: 50%;
+                }
+            }
 
-        .right-container {
+            ul {
+                margin-top: var(--mainMargin);
+                list-style: none;
+                padding: 0;
 
-            width: 80px;
-            height: calc(100vh - (2 * var(--mainMargin)));
-            background-color: red;
-            position: sticky;
-            top:0px;
+                li {
+                    color: var(--textColor);
+                    line-height: 2rem;
+                    width: calc(var(--leftWidth - (--containerMargin * 2)));
+                    display: flex;
+
+                    p:first-child {
+                        width: 80%;
+                        height: 4px;
+                        background-color: var(--themeColorGraph);
+                    }
+
+                    p:last-child {
+                        width: calc(100% - 80%);
+                        height: 4px;
+                        background-color: var(--colorGraph);
+
+                    }
+                }
+            }
+
         }
     }
+
+    .center-container {
+
+        width: calc(100% - 360px);
+        height: 2222px;
+        margin-left: 8px;
+        margin-right: 8px;
+        background-color: var(--colorContainer);
+        box-shadow: inset 0 0 100px 0px var(--centerColor);
+
+        overflow: scroll;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        div:first-child {
+            width: 100%;
+            height: var(--imageWith);
+
+            background-image: url(resources/images/beautiful-shot-mountains-trees-covered-snow-fog.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            opacity: 38%;
+        }
+
+        div:nth-of-type(2) {
+            width: calc(100% - var(--containerMargin));
+            height: calc(100% - var(--leftWidth));
+        }
+    }
+}
+
+.right-container {
+
+    width: 80px;
+    height: 100%;
+    background-color: var(--colorContainer);
+
+    position: sticky;
+    top: 0px;
+    /* ARREGLO PARA STICKY */
+
 }
