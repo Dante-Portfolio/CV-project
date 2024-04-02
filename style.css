@@ -4,14 +4,17 @@
     --colorMain: rgb(15, 15, 15);
     --colorContainer: rgb(22, 22, 22);
     --centerColor: rgba(159, 207, 219, 0.158);
-    --themeColorGraph: cyan;
+    --themeColorGraph: rgb(29, 73, 73);
     --leftWidth: 280px;
-    --imageWith: 220px;
+    --imageWith: 100px;
 
     --containerMargin: 20px;
     --textColor: white;
     --textSize: 10px;
     --colorGraph: rgb(36, 36, 36);
+    --borderGraph: 5px;
+    --borderGraphCircular: 8px;
+
 }
 
 * {
@@ -65,8 +68,12 @@ body {
                 }
             }
 
+            hr {
+                margin-top: calc(var(--leftWidth) / 20);
+                color: var(--colorGraph);
+            }
+
             ul {
-                margin-top: var(--mainMargin);
                 list-style: none;
                 padding: 0;
 
@@ -77,16 +84,47 @@ body {
                     display: flex;
 
                     p:first-child {
-                        width: 80%;
-                        height: 4px;
+                        width: 50%;
+                        height: var(--borderGraph);
                         background-color: var(--themeColorGraph);
                     }
 
                     p:last-child {
-                        width: calc(100% - 80%);
-                        height: 4px;
+                        width: calc(100% - 50%);
+                        height: var(--borderGraph);
                         background-color: var(--colorGraph);
 
+                    }
+                }
+            }
+
+            .percentage {
+                width: calc(var(--leftWidth - (--containerMargin * 2)));
+                margin-top: 15px;
+
+                display: flex;
+                justify-content: space-between;
+
+                div {
+                    width: 70px;
+                    height: 70px;
+                    border: var(--borderGraphCircular) solid var(--colorGraph);
+                    border-radius: 50%;
+                    position: relative;
+                    overflow: visible;
+
+                    div {
+                        border-right: var(--borderGraphCircular) solid var(--themeColorGraph);
+                        /* transform: rotate(-45deg); */
+                        position: absolute;
+                        bottom: calc(var(--borderGraphCircular) * -1);
+                        left: calc(var(--borderGraphCircular) * -1);
+                        color: var(--textColor);
+
+                        display: flex;
+                        align-items: center;
+
+                        
                     }
                 }
             }
